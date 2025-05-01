@@ -65,14 +65,19 @@ export default {
             {
               name: '/backtrack/getOrder',
               icon: 'el-icon-tickets',
-              title: '预测结果',
+              title: '预测回溯',
+            },
+            {
+              name: '/backtrack/historyExpectation',
+              icon: 'el-icon-tickets',
+              title: '历史预测',
             }
           ]
         },
         {
           name: '3',
           icon: 'el-icon-s-order',
-          title: '报价审批',
+          title: '报价预测',
           children: [
             // {
             //   name: '/quotation/semimonth',
@@ -92,7 +97,12 @@ export default {
             {
               name: '/quotation/year',
               icon: 'el-icon-tickets',
-              title: '年度',
+              title: 'CEA年度',
+            },
+            {
+              name: '/quotation/gecmonth',
+              icon: 'el-icon-tickets',
+              title: 'GEC月度',
             },
           ]
         },

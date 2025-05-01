@@ -16,8 +16,10 @@ import YearQuo from "../views/quotation/Year";
 import CEAMonthQuo from "../views/quotation/CEAMonth";
 import CCERMonthQuo from "../views/quotation/CCERMonth";
 import SemiMonthQuo from "../views/quotation/SemiMonth";
+import GECMonthQuo from "../views/quotation/GECMonth"
 import UploadPrice from "../views/backtrack/UploadPrice";
 import GetOrder from "../views/backtrack/GetOrder";
+import HistoryExpectation from "../views/backtrack/HistoryExpectation"
 
 const routes = [
     {
@@ -79,6 +81,11 @@ const routes = [
                 component: CEAMonthQuo,
             },
             {
+                path: '/quotation/gecmonth',
+                name: 'gecMonthQuotation',
+                component: GECMonthQuo,
+            },
+            {
                 path: '/quotation/ccermonth',
                 name: 'ccerMonthQuotation',
                 component: CCERMonthQuo,
@@ -97,6 +104,11 @@ const routes = [
                 path: '/backtrack/uploadPrice',
                 name: 'uploadPrice',
                 component: UploadPrice,
+            },
+            {
+                path: '/backtrack/historyExpectation',
+                name: 'historyExpectation',
+                component: HistoryExpectation,
             },
             {
                 path: '/user/manage',
