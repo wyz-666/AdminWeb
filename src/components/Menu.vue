@@ -108,6 +108,28 @@ export default {
         },
         {
           name: '4',
+          icon: 'el-icon-s-order',
+          title: '场外撮合交易',
+          children: [
+            {
+              name: '/transaction/notition',
+              icon: 'el-icon-coin',
+              title: '交易通知',
+            },
+            {
+              name: '/transaction/buyerTransaction',
+              icon: 'el-icon-coin',
+              title: '买方交易',
+            },
+            {
+              name: '/transaction/sellerTransaction',
+              icon: 'el-icon-coin',
+              title: '卖方交易',
+            },
+          ]
+        },
+        {
+          name: '5',
           icon: 'el-icon-user-solid',
           title: '用户',
           children: [

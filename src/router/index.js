@@ -20,6 +20,9 @@ import GECMonthQuo from "../views/quotation/GECMonth"
 import UploadPrice from "../views/backtrack/UploadPrice";
 import GetOrder from "../views/backtrack/GetOrder";
 import HistoryExpectation from "../views/backtrack/HistoryExpectation"
+import BuyerTransaction from "../views/transaction/BuyerTransaction"
+import Notition from "../views/transaction/Notition"
+import SellerTransaction from "../views/transaction/SellerTransaction"
 
 const routes = [
     {
@@ -124,7 +127,22 @@ const routes = [
                 path: '/result/page',
                 name: 'resultPage',
                 component: ResultPage
-            }
+            },
+            {
+                path: '/transaction/notition',
+                name: 'notition',
+                component: Notition,
+            },
+            {
+                path: '/transaction/sellerTransaction',
+                name: 'sellerTransaction',
+                component: SellerTransaction,
+            },
+            {
+                path: '/transaction/buyerTransaction',
+                name: 'buyerTransaction',
+                component: BuyerTransaction,
+            },
         ],
     },
 ]
