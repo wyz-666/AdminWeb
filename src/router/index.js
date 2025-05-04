@@ -23,6 +23,7 @@ import HistoryExpectation from "../views/backtrack/HistoryExpectation"
 import BuyerTransaction from "../views/transaction/BuyerTransaction"
 import Notition from "../views/transaction/Notition"
 import SellerTransaction from "../views/transaction/SellerTransaction"
+import Board from "../views/user/Board";
 
 const routes = [
     {
@@ -119,10 +120,16 @@ const routes = [
                 component: UserManage,
             },
             {
+                path: '/user/board',
+                name: 'board',
+                component: Board,
+            },
+            {
                 path: '/change/password',
                 name: 'changePassword',
                 component: ChangePassword,
             },
+            
             {
                 path: '/result/page',
                 name: 'resultPage',

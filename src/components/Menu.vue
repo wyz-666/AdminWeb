@@ -139,6 +139,11 @@ export default {
               title: '用户列表',
             },
             {
+              name: '/user/board',
+              icon: 'el-icon-coin',
+              title: '公告管理',
+            },
+            {
               name: '/change/password',
               icon: 'el-icon-lock',
               title: '修改密码',

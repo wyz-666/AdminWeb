@@ -3,7 +3,8 @@
     <el-col :span="24">
       <el-card shadow="never" style="border-top: none">
         <el-table :data="tableData" border style="width: 100%">
-          <el-table-column prop="nid" label="通知编号" width="100"> </el-table-column>
+          <el-table-column prop="nid" label="通知编号" width="150"> </el-table-column>
+          <el-table-column prop="tid" label="交易编号" width="150"> </el-table-column>
           <el-table-column prop="type" label="类型" width="100"> </el-table-column>
           <el-table-column prop="companyName" label="公司名称" width="120">
           </el-table-column>
@@ -11,7 +12,7 @@
           <el-table-column prop="userName" label="操作人" width="120"> </el-table-column>
           <el-table-column prop="phone" label="电话" width="120"> </el-table-column>
           <el-table-column prop="email" label="邮箱" width="180"> </el-table-column>
-          <el-table-column prop="state" label="状态" width="100">
+          <el-table-column prop="state" label="状态" width="80">
             <template #default="scope">
               <el-tag size="mini" type="success" v-if="scope.row.state === 2"
                 >已读</el-tag
