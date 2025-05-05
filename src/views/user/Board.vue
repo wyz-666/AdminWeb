@@ -20,7 +20,7 @@
           </el-table-column>
         </el-table>
 
-        <el-dialog title="上传大盘信息" v-model="dialogFormVisible" width="30%">
+        <el-dialog title="上传最新公告" v-model="dialogFormVisible" width="30%">
           <el-form :model="market">
             <el-form-item label="日期" :label-width="formLabelWidth">
               <el-date-picker
