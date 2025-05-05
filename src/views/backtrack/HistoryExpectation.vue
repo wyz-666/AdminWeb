@@ -76,6 +76,41 @@
       </el-card>
     </el-tab-pane>
     <el-tab-pane label="GEC月度">
+      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+        <el-tab-pane
+          v-for="(items, type) in groupedTableData"
+          :key="type"
+          :label="type"
+          :name="type"
+        >
+          <el-table
+            :data="items"
+            border
+            style="width: 100%"
+            @sort-change="(e) => handleSortChange(e, type)"
+          >
+            <el-table-column
+              prop="date"
+              label="日期"
+              width="120"
+              sortable="custom"
+            ></el-table-column>
+            <el-table-column prop="price" label="价格" width="100"></el-table-column>
+            <el-table-column
+              prop="priceIndex"
+              label="价格指数"
+              width="120"
+            ></el-table-column>
+            <!-- 根据你需要展示的字段继续添加 -->
+          </el-table>
+        </el-tab-pane>
+      </el-tabs>
+      <!-- <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+        <el-tab-pane label="User" name="first">User</el-tab-pane>
+        <el-tab-pane label="Config" name="second">Config</el-tab-pane>
+        <el-tab-pane label="Role" name="third">Role</el-tab-pane>
+        <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
+      </el-tabs>
       <el-card shadow="never" style="border-top: none">
         <el-table
           :data="tableData4"
@@ -83,14 +118,14 @@
           style="width: 100%"
           @sort-change="handleSortChange4"
         >
-          <el-table-column prop="type" label="产品类型" width="140"> </el-table-column>
+          <el-table-column prop="type" label="产品类型" width="200"> </el-table-column>
           <el-table-column prop="date" label="日期" width="100" sortable="custom">
           </el-table-column>
           <el-table-column prop="price" label="价格" width="120"> </el-table-column>
           <el-table-column prop="priceIndex" label="价格指数" width="120">
           </el-table-column>
         </el-table>
-      </el-card>
+      </el-card> -->
     </el-tab-pane>
     <el-button type="success" @click="exportExcel" style="margin-left: 10px"
       >导出所有数据</el-button
@@ -114,6 +149,8 @@ export default {
       tableData3: null,
       tableData4: null,
       formLabelWidth: "120px",
+      activeName: "", // 当前激活的tab
+      groupedTableData: {}, // 分组后的数据
       user: {
         type: "",
       },
@@ -174,6 +211,25 @@ export default {
         })
         .then((response) => {
           this.tableData4 = response.data.data;
+          const allData = response.data.data;
+
+          // 清空
+          this.groupedTableData = {};
+
+          // 遍历，按产品类型分组
+          allData.forEach((item) => {
+            const type = item.type; // 这里假设你的字段叫 productType
+            if (!this.groupedTableData[type]) {
+              this.groupedTableData[type] = [];
+            }
+            this.groupedTableData[type].push(item);
+          });
+          console.log("groupedTableData:", this.groupedTableData);
+          // 设置第一个 tab 默认激活
+          const types = Object.keys(this.groupedTableData);
+          if (types.length > 0) {
+            this.activeName = types[0];
+          }
         });
     },
     formatDate(val) {
@@ -281,21 +337,33 @@ export default {
         this.tableData3.sort((a, b) => parseDate(a[prop]) - parseDate(b[prop]));
       }
     },
-    handleSortChange4({ prop, order }) {
-      const parseDate = (str) => {
-        // 假设 str 是类似 "2024年5月"、"2023年12月"
-        const match = str.match(/^(\d{4})年(\d{1,2})月$/);
-        if (!match) return 0; // 如果格式不对，返回0
-        const year = parseInt(match[1]);
-        const month = parseInt(match[2]);
-        return year * 100 + month; // 202405，202312 这种数字，方便比较
-      };
+    handleSortChange(e,type) {
+      const { prop, order } = e;
+      if (prop !== "date") return; // 只处理日期列排序
 
-      if (order === "descending") {
-        this.tableData4.sort((a, b) => parseDate(b[prop]) - parseDate(a[prop]));
-      } else if (order === "ascending") {
-        this.tableData4.sort((a, b) => parseDate(a[prop]) - parseDate(b[prop]));
+      this.groupedTableData[type].sort((a, b) => {
+        const aTime = this.parseDate(a.date);
+        const bTime = this.parseDate(b.date);
+
+        if (order === "ascending") {
+          return aTime - bTime;
+        } else if (order === "descending") {
+          return bTime - aTime;
+        } else {
+          return 0;
+        }
+      });
+    },
+
+    parseDate(dateStr) {
+      // 假设是 "2025年3月" 这种格式
+      const match = dateStr.match(/^(\d{4})年(\d{1,2})月$/);
+      if (match) {
+        const year = parseInt(match[1], 10);
+        const month = parseInt(match[2], 10);
+        return new Date(year, month - 1); // 月份是0-11
       }
+      return new Date(0); // 万一解析失败，给个最早的时间
     },
   },
 };
