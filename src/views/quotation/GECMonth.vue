@@ -10,6 +10,8 @@
           </el-table-column>
           <el-table-column prop="type" label="产品类型" width="100">
           </el-table-column>
+          <el-table-column prop="uuid" label="报价人ID" width="120">
+          </el-table-column>
           <el-table-column prop="price" label="价格" width="100">
           </el-table-column>
           <el-table-column prop="txVolume" label="交易量" width="100">

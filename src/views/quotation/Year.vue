@@ -8,6 +8,8 @@
         <el-table :highlight-current-row="true" :data="tableData" border style="width: 100%;">
           <el-table-column prop="product" label="产品" width="100">
           </el-table-column>
+          <el-table-column prop="uuid" label="报价人ID" width="120">
+          </el-table-column>
           <el-table-column prop="lowerPrice" label="最低价" width="100">
           </el-table-column>
           <el-table-column prop="higherPrice" label="最高价" width="100">
