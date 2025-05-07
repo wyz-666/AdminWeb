@@ -156,7 +156,7 @@ export default {
         .then((response) => {
           let data1 = response.data.data;
           // 先根据 score 从小到大排序
-          data1.sort((a, b) => b.score - a.score);
+          data1.sort((a, b) => a.score - b.score);
           // 然后增加 ranking 字段，排名从 1 开始
           data1.forEach((item, index) => {
             item.ranking = index + 1;
