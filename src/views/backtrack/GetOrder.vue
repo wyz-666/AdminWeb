@@ -50,7 +50,7 @@
         </el-tab-pane>
         <el-tab-pane label="CCER月度">
           <el-card shadow="never" style="border-top: none">
-            <div>CCER月度预测回溯计算方式：计算预测中间价和真实值的偏离程度，越小代表预测越准确。</div>
+            <div>CCER月度预测回溯计算方式：分别计算（1）集中度：收盘价落在预测区间外频次/本月交易日数（2）偏离度：本月距离预测区间最远的真实值/预测中间价，再计算（1）和（2）的均值，均值越小代表预测越准确。</div>
             <el-table
               :highlight-current-row="true"
               :data="tableData1"
