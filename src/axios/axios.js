@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ElMessage } from 'element-plus';
 
-axios.defaults.baseURL = "durilxfh.backend.2t27ng4k.lnti7x5h.com";
+axios.defaults.baseURL = "https://backend-163004-5-1360144666.sh.run.tcloudbase.com";
 
 const request = axios.create({
     timeout: 10000,
