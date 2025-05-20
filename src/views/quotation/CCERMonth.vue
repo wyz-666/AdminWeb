@@ -202,21 +202,21 @@ export default {
     },
     uploadExpectation() {
       console.log('month:', dayjs(this.month).format('YYYY年M月'))
-      // this.$axios.post('/admin/submitStats', {
-      //   product: 'CCER',
-      //   type: 'month',
-      //   date: dayjs(this.month).format('YYYY年M月'),
-      //   lowerPrice: this.p1,
-      //   higherPrice: this.p2,
-      //   midPrice: this.p3
-      // }).then((response) => {
-      //   if (response.data.statusCode === 200) {
-      //     this.$message({
-      //       type: 'success',
-      //       message: '上传成功!'
-      //     });
-      //   }
-      // })
+      this.$axios.post('/admin/submitStats', {
+        product: 'CCER',
+        type: 'month',
+        date: dayjs(this.month).format('YYYY年M月'),
+        lowerPrice: this.p1,
+        higherPrice: this.p2,
+        midPrice: this.p3
+      }).then((response) => {
+        if (response.data.statusCode === 200) {
+          this.$message({
+            type: 'success',
+            message: '上传成功!'
+          });
+        }
+      })
       this.dialogFormVisible1 = false;
     },
     formatDate(val) {

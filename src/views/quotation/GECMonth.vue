@@ -158,20 +158,20 @@ export default {
     },
     uploadExpectation() {
       console.log('month:', dayjs(this.expectation.date).format('YYYY年M月'))
-      // this.$axios.post('/admin/submitGECStats', {
-      //   product: 'GEC',
-      //   type: this.expectation.type,
-      //   date: dayjs(this.expectation.date).format('YYYY年M月'),
-      //   price: this.expectation.price
-      //   priceIndex: this.expectation.priceIndex
-      // }).then((response) => {
-      //   if (response.data.statusCode === 200) {
-      //     this.$message({
-      //       type: 'success',
-      //       message: '上传成功!'
-      //     });
-      //   }
-      // })
+      this.$axios.post('/admin/submitGECStats', {
+        product: 'GEC',
+        type: this.expectation.type,
+        date: dayjs(this.expectation.date).format('YYYY年M月'),
+        price: this.expectation.price,
+        priceIndex: this.expectation.priceIndex
+      }).then((response) => {
+        if (response.data.statusCode === 200) {
+          this.$message({
+            type: 'success',
+            message: '上传成功!'
+          });
+        }
+      })
       this.dialogFormVisible1 = false;
     },
     formatDate(val) {
