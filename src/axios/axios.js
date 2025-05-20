@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ElMessage } from 'element-plus';
 
-axios.defaults.baseURL = "https://golang-261m-148062-6-1349710590.sh.run.tcloudbase.com";
+axios.defaults.baseURL = "durilxfh.backend.2t27ng4k.lnti7x5h.com";
 
 const request = axios.create({
     timeout: 10000,
