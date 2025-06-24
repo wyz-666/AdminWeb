@@ -5,6 +5,8 @@
         <el-table :data="tableData" border style="width: 100%">
           <el-table-column prop="userId" label="编号" width="100">
           </el-table-column>
+          <el-table-column prop="uuid" label="个人ID" width="100">
+          </el-table-column>
           <el-table-column prop="account" label="账户名" width="100">
           </el-table-column>
           <el-table-column prop="companyName" label="公司名称" width="120">
