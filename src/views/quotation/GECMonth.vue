@@ -139,7 +139,9 @@ export default {
               count: 0
             }
           }
-          typeMap[item.type].sum += item.price;   // 累加价格
+          let price = item.lowerPrice+item.higherPrice
+
+          typeMap[item.type].sum += price;   // 累加价格
           typeMap[item.type].count += 1;           // 记录数量
         });
 
@@ -190,7 +192,8 @@ export default {
       const exportData = this.tableData.map(item => ({
         '用户编号': item.uuid,
         '产品类型': item.type,
-        '价格': item.price,
+        '最低价': item.lowerPrice,
+        '最高价': item.higherPrice,
         '交易量': item.txVolume,
         '适用时间': item.applicableTime,
       }));
