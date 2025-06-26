@@ -12,6 +12,8 @@
           </el-table-column>
           <el-table-column prop="uuid" label="报价人ID" width="120">
           </el-table-column>
+          <el-table-column prop="userName" label="报价人" width="120">
+          </el-table-column>
           <el-table-column prop="lowerPrice" label="最低价" width="100">
           </el-table-column>
           <el-table-column prop="higherPrice" label="最高价" width="100">
