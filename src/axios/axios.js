@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus';
 axios.defaults.baseURL = "https://backend-163004-5-1360144666.sh.run.tcloudbase.com";
 
 const request = axios.create({
-    timeout: 10000,
+    timeout: 100000,
     headers: {
         'Content-Type': 'application/json;charset=UTF-8'
     }
