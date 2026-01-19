@@ -15,6 +15,10 @@
           </el-table-column>
           <el-table-column prop="userName" label="操作人" width="120">
           </el-table-column>
+          <el-table-column prop="phone" label="电话" width="120">
+          </el-table-column>
+          <el-table-column prop="email" label="邮箱" width="120">
+          </el-table-column>
           <el-table-column prop="type" label="角色" width="100">
             <template #default="scope">
               <el-tag size="mini" type="success" v-if="scope.row.type === 1">管理员</el-tag>
